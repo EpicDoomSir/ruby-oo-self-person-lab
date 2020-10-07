@@ -19,6 +19,60 @@ class Person
         @hygiene = new_value.clamp(0, 10)
     end
 
+    def clean?
+        if self.hygiene > 7
+            return true
+        else
+            return false
+        end
+    end
+
+    def happy?
+        if self.happiness > 7
+            return true
+        else
+            return false
+        end
+    end
+
+    def get_paid(salary)
+        self.bank_account += salary
+        puts "all about the benjamins"
+    end
+
+    def take_bath
+        self.hygiene += 4
+        puts "♪ Rub-a-dub just relaxing in the tub ♫"
+    end
+
+    def work_out
+        self.hygiene -= 3
+        self.happiness += 2
+        puts "♪ another one bites the dust ♫"
+    end
+
+    def call_friend(friend)
+        self.happiness += 3
+        friend.happiness += 3
+        puts "Hi #{friend.name}! It's #{name}. How are you?"
+    end
+
+    def start_conversation(person, topic)
+        if topic == "politics"
+            person.happiness -= 2
+            self.happiness -=2
+            puts "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
+            person.happiness += 1
+            self.happiness += 1
+            puts "blah blah sun blah rain"
+        else 
+            puts "blah blah blah blah blah"
+        end
+
+    end
 end
 
+bob = Person.new("Bob")
+tess = Person.new("Tess")
 binding.pry
